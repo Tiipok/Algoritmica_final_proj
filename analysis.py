@@ -67,7 +67,6 @@ plt1 = df.groupby('month')['user_id'].count().sort_values(ascending=False)
 
 plt2 = df[(df['month']=='02')].groupby('day')['user_id'].count() 
 
-
 plt3 = df[(df['month']=='02')].groupby('day')['user_id'].count().agg(['min','mean', 'max'])
 
 plt4 = df[df['format']!='without format']['format'].value_counts()
@@ -84,36 +83,36 @@ plt9 = df[df['format']=='category'].groupby(['material'])['user_id'].count().sor
 
 
 # выводим таблицы
-plt1.plot(kind = 'barh',title='Топ месяцев по количеству посещений в месяц')
+plt1.plot(kind='barh', title='Топ месяцев по количеству посещений в месяц')
 plt.show()
 
-plt2.plot(kind = 'line',title='Количество посещений по дням за февраль')
+plt2.plot(kind='line', title='Количество посещений по дням за февраль')
 plt.grid()
 plt.show()
 
-plt3.plot(kind = 'barh',title='Статистика посещений за один день в феврале')
+plt3.plot(kind='barh', title='Статистика посещений за один день в феврале')
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.3
-plt4.plot(kind = 'barh',title='Топ посещаемости по разделам')
+plt4.plot(kind='barh', title='Топ посещаемости по разделам')
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.4 
-plt5.iloc[0:10].plot(kind = 'barh',title='Топ 10 самых посещаемых курсов')
+plt5.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых курсов')
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.6
-plt6.iloc[0:10].plot(kind = 'barh',title='Топ 10 самых посещаемых уроков')
+plt6.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых уроков')
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.2
-plt7.iloc[0:10].plot(kind = 'barh',title='Топ 10 самых посещаемых видео (номера)')
+plt7.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых видео (номера)')
 plt.show()
 
-plt8.iloc[0:10].plot(kind = 'barh',title='Топ 10 самых посещаемых направлений')
+plt8.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых направлений')
 plt.show()
 
-plt9.iloc[0:10].plot(kind = 'barh',title='Топ посещения по категориям')
+plt9.iloc[0:10].plot(kind='barh', title='Топ посещения по категориям')
 plt.show()
 
 
