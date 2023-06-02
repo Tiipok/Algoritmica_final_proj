@@ -66,9 +66,9 @@ df['submaterial'] = df['URL_visited'].apply(submaterial)
 # создаем таблицы
 plt1 = df.groupby('month')['user_id'].count().sort_values(ascending=False)
 
-plt2 = df[(df['month']=='02')].groupby('day')['user_id'].count() 
+plt2 = df[(df['month']=='02')].groupby('day')['user_id'].count().agg(['min','mean', 'max'])
 
-plt3 = df[(df['month']=='02')].groupby('day')['user_id'].count().agg(['min','mean', 'max'])
+plt3 = df[(df['month']=='02')].groupby('day')['user_id'].count() 
 
 plt4 = df[df['format']!='without format']['format'].value_counts()
 
@@ -87,11 +87,11 @@ plt9 = df[df['format']=='category'].groupby(['material'])['user_id'].count().sor
 plt1.plot(kind='barh', title='Топ месяцев по количеству посещений в месяц')
 plt.show()
 
-plt2.plot(kind='line', title='Количество посещений по дням за февраль')
-plt.grid()
+plt2.plot(kind='barh', title='Статистика посещений за один день в феврале')
 plt.show()
 
-plt3.plot(kind='barh', title='Статистика посещений за один день в феврале')
+plt3.plot(kind='line', title='Количество посещений по дням за февраль')
+plt.grid()
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.3
