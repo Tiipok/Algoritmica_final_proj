@@ -64,7 +64,7 @@ df['submaterial'] = df['URL_visited'].apply(submaterial)
 
 
 # создаем таблицы
-plt1 = df.groupby('month')['user_id'].count().sort_values(ascending=False)
+plt1 = df[(df['format']=='courses') & (df['submaterial']!='without material')].groupby(['submaterial'])['user_id'].count().sort_values(ascending=False)
 
 plt2 = df[(df['month']=='02')].groupby('day')['user_id'].count().agg(['min','mean', 'max'])
 
@@ -74,7 +74,7 @@ plt4 = df[df['format']!='without format']['format'].value_counts()
 
 plt5 = df[(df['format']=='courses') & (df['material']!='without material')].groupby(['material'])['user_id'].count().sort_values(ascending=False)
 
-plt6 = df[(df['format']=='courses') & (df['submaterial']!='without material')].groupby(['submaterial'])['user_id'].count().sort_values(ascending=False)
+plt6 = df.groupby('month')['user_id'].count().sort_values(ascending=False)
 
 plt7 = df[df['format']=='video'].groupby(['material'])['user_id'].count().sort_values(ascending=False)
 
@@ -84,9 +84,11 @@ plt9 = df[df['format']=='category'].groupby(['material'])['user_id'].count().sor
 
 
 # выводим таблицы
-plt1.plot(kind='barh', title='Топ месяцев по количеству посещений в месяц')
+mat.rcParams['figure.subplot.left'] = 0.6
+plt1.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых уроков')
 plt.show()
 
+mat.rcParams['figure.subplot.left'] = 0.2
 plt2.plot(kind='barh', title='Статистика посещений за один день в феврале')
 plt.show()
 
@@ -102,8 +104,8 @@ mat.rcParams['figure.subplot.left'] = 0.4
 plt5.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых курсов')
 plt.show()
 
-mat.rcParams['figure.subplot.left'] = 0.6
-plt6.iloc[0:10].plot(kind='barh', title='Топ 10 самых посещаемых уроков')
+mat.rcParams['figure.subplot.left'] = 0.2
+plt6.plot(kind='barh', title='Топ месяцев по количеству посещений в месяц')
 plt.show()
 
 mat.rcParams['figure.subplot.left'] = 0.2
