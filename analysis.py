@@ -37,6 +37,7 @@ def material(url):
             str_val = 'without material'
         else:
             str_val = data[5]
+            
     return str_val
 
 df['material'] = df['URL_visited'].apply(material)
